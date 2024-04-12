@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_112252) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_143542) do
   create_table "cars", force: :cascade do |t|
     t.string "make"
     t.string "model"
     t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "moisture_logs", force: :cascade do |t|
+    t.integer "sensor"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+MoistureLog.create!(sensor: 1, value: 556)
+MoistureLog.create!(sensor: 2, value: 1001)
+MoistureLog.create!(sensor: 1, value: 560)
+
