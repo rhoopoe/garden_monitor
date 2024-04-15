@@ -1,0 +1,14 @@
+<div>
+  <h1>
+    <%= @plant.name %>
+  </h1>
+  <p>
+    Variety: <%= @plant.variety %>
+  </p>
+  <p>
+    <%= @plant.created_at %>
+  </p>
+  <%= link_to "Edit plant", edit_plant_path(@plant) %> |
+  <%= button_to "Delete", @plant, method: :delete %>
+  <a href="/plants">Back</a>
+</div>

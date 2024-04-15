@@ -1,0 +1,32 @@
+<%= form_with model: @plant do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @plant.errors.full_messages_for(:name).each do |name_message|%>
+      <p>
+        <%= name_message %>
+      </p>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :variety %><br>
+    <%= form.text_field :variety %>
+    <% @plant.errors.full_messages_for(:variety).each do |variety_message|%>
+      <p>
+        <%= variety_message %>
+      </p>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :plant_date %>
+    <%= form.date_field :plant_date %>
+    <% @plant.errors.full_messages_for(:plant_date).each do |plant_date_message|%>
+      <p>
+        <%= plant_date_message %>
+      </p>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
