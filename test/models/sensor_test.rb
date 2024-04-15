@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MoistureLogTest < ActiveSupport::TestCase
+class SensorTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

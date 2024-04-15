@@ -1,0 +1,2 @@
+class PlantContainer < ApplicationRecord
+end

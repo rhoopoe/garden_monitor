@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_143542) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_15_143845) do
   create_table "cars", force: :cascade do |t|
     t.string "make"
     t.string "model"
@@ -22,6 +22,38 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_143542) do
   create_table "moisture_logs", force: :cascade do |t|
     t.integer "sensor"
     t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plant_containers", force: :cascade do |t|
+    t.string "description"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "variety"
+    t.datetime "plant_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sensor_logs", force: :cascade do |t|
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.string "name"
+    t.string "descroption"
+    t.string "location"
+    t.integer "minimum_value"
+    t.integer "maximum_value"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

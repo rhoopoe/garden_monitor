@@ -1,0 +1,2 @@
+class SensorLogsController < ApplicationController
+end

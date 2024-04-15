@@ -1,11 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sensor: 1
   value: 1
-  datetime: 2024-04-12 17:27:59
 
 two:
-  sensor: 1
   value: 1
-  datetime: 2024-04-12 17:27:59
