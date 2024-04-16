@@ -19,13 +19,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_143845) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "moisture_logs", force: :cascade do |t|
-    t.integer "sensor"
-    t.integer "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "plant_containers", force: :cascade do |t|
     t.string "description"
     t.string "notes"
