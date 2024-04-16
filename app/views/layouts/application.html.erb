@@ -7,17 +7,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-  <header class="bg-red-500 text-white" >
+  <header class="bg-red-200 text-white h-[20vh] flex flex-col items-center justify-center text-2xl" >
     HEADER
   </header>
   <main>
     <%= yield %>
   </main>
-  <footer>FOOTER</footer>
+  <footer class="">FOOTER</footer>
   </body>
 </html>
