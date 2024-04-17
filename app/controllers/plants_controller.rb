@@ -17,6 +17,8 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
+    @container = PlantContainer.first
+    @plant.plant_containers << @container
 
     if @plant.save
       redirect_to plants_url

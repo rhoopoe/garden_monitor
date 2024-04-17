@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_15_143845) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_125259) do
   create_table "cars", force: :cascade do |t|
     t.string "make"
     t.string "model"
@@ -24,6 +24,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_143845) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "plant_containers_plants", id: false, force: :cascade do |t|
+    t.integer "plant_container_id", null: false
+    t.integer "plant_id", null: false
+    t.index ["plant_container_id", "plant_id"], name: "idx_on_plant_container_id_plant_id_ba52d4e21f"
+    t.index ["plant_id", "plant_container_id"], name: "idx_on_plant_id_plant_container_id_cd790abdeb"
   end
 
   create_table "plants", force: :cascade do |t|
