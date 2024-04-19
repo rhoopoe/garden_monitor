@@ -1,12 +1,8 @@
-<div id="<%= dom_id plant %>">
-  <p>
-    <strong>Name:</strong>
-    <%= plant.name %>
-  </p>
-  <p>
-    <strong>Variety:</strong>
-    <%= plant.variety %>
-  </p>
-  <a href="/plants/<%= plant.id %>">Show more</a>
-
-</div>
+<tr class="h-12 shadow rounded" id="<%= dom_id plant %>">
+  <td><%= plant.id %></td>
+  <td><%= plant.name %></td>
+  <td><%= plant.variety %></td>
+  <td><%= plant.plant_date.strftime("%Y-%M-%d") %></td>
+  <td><%= plant.created_at.strftime("%Y-%M-%d") %></td>
+  <td class="h-full"><a class="bg-yellow-500 text-white p-2 rounded" href="/plants/<%=plant.id %>">Info</a></td>
+</tr>

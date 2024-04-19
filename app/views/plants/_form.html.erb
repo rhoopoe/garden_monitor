@@ -27,6 +27,15 @@
     <% end %>
   </div>
   <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <% @plant.errors.full_messages_for(:image).each do |plant_image_message|%>
+      <p>
+        <%= plant_image_message %>
+      </p>
+    <% end %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

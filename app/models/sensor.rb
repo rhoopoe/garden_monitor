@@ -4,6 +4,6 @@ class Sensor < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 255 }
   validates :is_active, inclusion: { in: [true, false] }
-  validates :minimum_value, presence: true, numericality: { only_integer: true }, minimum: 0
-  validates :maximum_value, presence: true, numericality: { only_integer: true }, minimum: 0
+  validates :minimum_value, presence: true, numericality: { only_integer: true }
+  validates :maximum_value, presence: true, numericality: { only_integer: true }
 end

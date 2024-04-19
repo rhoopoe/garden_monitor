@@ -10,20 +10,28 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Plant.create!(name: 'Green Pea', variety: 'Kelvedon', plant_date: '2024-03-16T14:27:13+0000')
-Plant.create!(name: 'Dill', variety: 'Mammoth', plant_date: '2024-03-16T14:27:13+0000')
+pea = Plant.new(name: 'Green Pea', description: 'Wrinkled type, cold resistant, climbing plant',
+variety: 'Kelvedon', plant_date: '2024-03-16T14:27:13+0000')
+
+dill = Plant.new(name: 'Dill', description: 'short herb, branched leaves, good with cucumbers',
+                 variety: 'Mammoth', plant_date: '2024-03-16T14:27:13+0000')
+
+pea.image.attach(io: File.open('db/seed_files/peas.jpg'), filename: 'peas.jpg')
+dill.image.attach(io: File.open('db/seed_files/dill.jpg'), filename: 'dill.jpg')
+pea.save!
+dill.save!
+
+sleep(5)
+
 
 PlantContainer.create!(description: 'Long brown shallow container', notes: 'Old one', location: "Back of balcony, floor")
 PlantContainer.create!(description: 'Light blue deep container', notes: 'New one', location: "Back of balcony, elevated")
 
-pea = Plant.find_by_name('Green Pea')
-dill = Plant.find_by_name('Dill')
-
 brown_container = PlantContainer.first
 brown_container.update(plants: [pea, dill])
 
-Sensor.create!(name: 'Soil moisture sensor', description: 'capacitive type',
+Sensor.create!(name: 'Soil moisture sensor #1', description: 'capacitive type',
               minimum_value: 0, maximum_value: 1024, is_active: true, plant_container_id: brown_container.id)
 
-Sensor.create!(name: 'Soil moisture sensor', description: 'resistive type',
+Sensor.create!(name: 'Soil moisture sensor #2', description: 'resistive type',
               minimum_value: 0, maximum_value: 256, is_active: true, plant_container_id: brown_container.id)

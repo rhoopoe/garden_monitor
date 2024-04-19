@@ -14,9 +14,9 @@ class SensorLogsController < ApplicationController
   end
 
   def show
-    sensor_log = SensorLog.find(params[:id])
+    @sensor_log = SensorLog.find(params[:id])
     respond_to do |format|
-      format.json {render json:sensor_log}
+      format.json {render json:@sensor_log}
     end
   end
 

@@ -16,7 +16,8 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = Plant.new(plant_params)
+    ps = plant_params
+    @plant = Plant.new(ps)
     @container = PlantContainer.first
     @plant.plant_containers << @container
 
@@ -50,7 +51,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :variety, :plant_date)
+    params.require(:plant).permit(:name, :variety, :plant_date, :image)
   end
 
 end

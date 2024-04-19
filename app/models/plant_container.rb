@@ -1,5 +1,4 @@
 class PlantContainer < ApplicationRecord
-  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :description, length: { maximum: 2000 }
   validates :notes, length: {maximum: 2000 }
   validates :location, length: { maximum: 200 }
