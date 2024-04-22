@@ -20,6 +20,7 @@
         <li><%= link_to "Containers", plant_containers_path %></li>
       </ul>
     </nav>
+    <%= "Hello, #{current_user.username}" if current_user %>
   </header>
   <main class="min-h-[83vh] flex justify-center bg-neutral-50">
     <%= yield %>
