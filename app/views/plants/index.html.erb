@@ -1,6 +1,11 @@
 <div class="w-3/5 bg-white py-3 px-2">
   <h1 class="text-4xl font-bold mb-6">My Plants</h1>
   <div class="px-2" id="plants">
+    <%= flash.each do |name, message| %>
+      <p class="<%= name %>">
+        <%= message %>
+      </p>
+    <% end %>
     <table class="w-full my-2 text-center">
       <tr class="text-center text-lg bg-green-500 text-white w-full rounded h-16">
         <th>Id</th>

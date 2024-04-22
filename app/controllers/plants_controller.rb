@@ -13,16 +13,19 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
+    @containers = PlantContainer.all
   end
 
   def create
     ps = plant_params
-    @plant = Plant.new(ps)
-    @container = PlantContainer.first
-    @plant.plant_containers << @container
+    @containers = PlantContainer.find(ps[:plant_containers])
+    @plant = Plant.new({name: ps[:name], variety: ps[:variety], plant_date: ps[:plant_date],
+                        image: ps[:image]})
+    @plant.plant_containers << @containers
 
     if @plant.save
       redirect_to plants_url
+      flash[:success] = "Plant was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -51,7 +54,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :variety, :plant_date, :image)
+    params.require(:plant).permit(:name, :variety, :plant_date, :image, :plant_containers => [])
   end
 
 end

@@ -36,6 +36,11 @@
     <% end %>
   </div>
   <div>
+    <%= form.label :plant_containers %>
+    <%= form.collection_check_boxes :plant_containers, PlantContainer.order(:description), :id, :description,
+                                    {include_hidden: false}%>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
