@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :require_admin, only: %i[ edit update destroy ]
 
   # GET /users or /users.json
   def index
@@ -60,13 +61,28 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation);
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation);
+  end
+
+  def require_admin
+    user_id = session[:user_id]
+    if user_id
+      user = User.find(user_id)
+      unless user&.admin?
+        flash[:error] = "Only an admin can perform this action."
+        redirect_to users_path
+      end
+    else
+      redirect_to login_path
     end
+  end
+
 end

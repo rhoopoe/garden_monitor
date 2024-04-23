@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_152615) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_101231) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,8 +59,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_152615) do
   end
 
   create_table "plant_containers_plants", id: false, force: :cascade do |t|
-    t.integer "plant_container_id", null: false
-    t.integer "plant_id", null: false
+    t.bigint "plant_container_id", null: false
+    t.bigint "plant_id", null: false
     t.index ["plant_container_id", "plant_id"], name: "idx_on_plant_container_id_plant_id_ba52d4e21f"
     t.index ["plant_id", "plant_container_id"], name: "idx_on_plant_id_plant_container_id_cd790abdeb"
   end
@@ -75,7 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_152615) do
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sensor_id"
+    t.bigint "sensor_id"
     t.index ["sensor_id"], name: "index_sensor_logs_on_sensor_id"
   end
 
@@ -87,7 +90,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_152615) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "plant_container_id"
+    t.bigint "plant_container_id"
     t.index ["plant_container_id"], name: "index_sensors_on_plant_container_id"
   end
 
@@ -97,6 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_152615) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

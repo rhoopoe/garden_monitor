@@ -9,4 +9,9 @@ class SessionsController < ApplicationController
       redirect_to login_path, notice: "Incorrect username or password. Please try again."
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to users_path
+  end
 end

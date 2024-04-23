@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GardeningApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<head>
+  <title>GardeningApp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-  <header class="py-2 px-3 text-2xl text-white bg-green-500 h-[7vh] flex justify-between items-center" >
-    <h1>🌽 Garden Monitor</h1>
-    <nav>
-      <ul class="flex space-x-2">
-        <li><%= link_to "Logs", sensor_logs_path %></li>
-        <li><%= link_to "Plants", plants_path %></li>
-        <li><%= link_to "Containers", plant_containers_path %></li>
-      </ul>
-    </nav>
-    <%= "Hello, #{current_user.username}" if current_user %>
-  </header>
-  <main class="min-h-[83vh] flex justify-center bg-neutral-50">
-    <%= yield %>
-  </main>
-  <footer class="py-2 px-3 text-2xl text-white bg-green-500 h-[10vh]">FOOTER</footer>
-  </body>
+<body>
+<header class="py-2 px-3 text-2xl text-white bg-green-500 h-[7vh] flex justify-between items-center">
+  <h1>🌽 Garden Monitor</h1>
+  <nav>
+    <ul class="flex space-x-2">
+      <li><%= link_to "Logs", sensor_logs_path %></li>
+      <li><%= link_to "Plants", plants_path %></li>
+      <li><%= link_to "Containers", plant_containers_path %></li>
+    </ul>
+  </nav>
+  <% if current_user %>
+    <%= "Hello, #{current_user.username}" %>
+    <%= button_to "Log out", logout_path %>
+  <% end %>
+</header>
+<main class="min-h-[83vh] flex justify-center bg-neutral-50">
+  <%= yield %>
+</main>
+<footer class="py-2 px-3 text-2xl text-white bg-green-500 h-[10vh]">FOOTER</footer>
+</body>
 </html>

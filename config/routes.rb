@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   # Session routes
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-  get 'logout', to: 'sessions#logout'
-  post 'login', to: 'sessions#destroy'
+  post '/logout', to: 'sessions#destroy'
 
   # Defines the root path route ("/")
   root "sensor_logs#index"
