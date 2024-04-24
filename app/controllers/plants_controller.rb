@@ -3,7 +3,7 @@ class PlantsController < ApplicationController
   def index
     @plants = Plant.all
     respond_to do |format|
-      format.html {render :index => @plants}
+      format.html { render :index => @plants }
     end
   end
 
@@ -19,8 +19,9 @@ class PlantsController < ApplicationController
   def create
     ps = plant_params
     @containers = PlantContainer.find(ps[:plant_containers])
-    @plant = Plant.new({name: ps[:name], variety: ps[:variety], plant_date: ps[:plant_date],
-                        image: ps[:image]})
+    @plant = Plant.new({ name: ps[:name], variety: ps[:variety], description: ps[:description],
+                         plant_date: ps[:plant_date],
+                         image: ps[:image] })
     @plant.plant_containers << @containers
 
     if @plant.save
@@ -54,7 +55,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name, :variety, :plant_date, :image, :plant_containers => [])
+    params.require(:plant).permit(:name, :variety, :plant_date, :image, :description, :plant_containers => [])
   end
 
 end

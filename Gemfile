@@ -28,6 +28,7 @@ gem "jbuilder"
 
 gem "spring", group: :development
 gem "foreman", group: :development
+gem "faker", group: :development
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

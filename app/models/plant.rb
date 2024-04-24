@@ -4,6 +4,7 @@ class Plant < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :variety, presence: true
   validates :plant_date, presence: true
+  validates :description, presence: true
   validate :check_file_presence
 
   def check_file_presence

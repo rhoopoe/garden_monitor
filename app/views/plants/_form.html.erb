@@ -1,46 +1,59 @@
 <%= form_with model: @plant do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-    <% @plant.errors.full_messages_for(:name).each do |name_message|%>
-      <p>
-        <%= name_message %>
-      </p>
-    <% end %>
+  <div class="grid grid-cols-2 gap-3">
+    <div class="w-full flex flex-col justify-center">
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+      <% @plant.errors.full_messages_for(:name).each do |name_message| %>
+        <p>
+          <%= name_message %>
+        </p>
+      <% end %>
+    </div>
+    <div class="w-full flex flex-col justify-center">
+      <%= form.label :variety %><br>
+      <%= form.text_field :variety %>
+      <% @plant.errors.full_messages_for(:variety).each do |variety_message| %>
+        <p>
+          <%= variety_message %>
+        </p>
+      <% end %>
+    </div>
+    <div class="w-full flex flex-col justify-center col-span-2">
+      <%= form.label :description %><br>
+      <%= form.text_area :description %>
+      <% @plant.errors.full_messages_for(:variety).each do |description_message| %>
+        <p>
+          <%= description_message %>
+        </p>
+      <% end %>
+    </div>
+    <div class="w-full flex flex-col justify-center">
+      <%= form.label :plant_date %>
+      <%= form.date_field :plant_date %>
+      <% @plant.errors.full_messages_for(:plant_date).each do |plant_date_message| %>
+        <p>
+          <%= plant_date_message %>
+        </p>
+      <% end %>
+    </div>
+    <div class="w-full flex flex-col justify-center">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+      <% @plant.errors.full_messages_for(:image).each do |plant_image_message| %>
+        <p>
+          <%= plant_image_message %>
+        </p>
+      <% end %>
+    </div>
+    <div class="w-full flex flex-col justify-center">
+      <%= form.label :plant_containers, class: "mb-2" %>
+      <div class="grid grid-cols-2">
+        <%= form.collection_check_boxes :plant_containers, PlantContainer.order(:description), :id, :description,
+                                        { include_hidden: false } %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= form.label :variety %><br>
-    <%= form.text_field :variety %>
-    <% @plant.errors.full_messages_for(:variety).each do |variety_message|%>
-      <p>
-        <%= variety_message %>
-      </p>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :plant_date %>
-    <%= form.date_field :plant_date %>
-    <% @plant.errors.full_messages_for(:plant_date).each do |plant_date_message|%>
-      <p>
-        <%= plant_date_message %>
-      </p>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-    <% @plant.errors.full_messages_for(:image).each do |plant_image_message|%>
-      <p>
-        <%= plant_image_message %>
-      </p>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :plant_containers %>
-    <%= form.collection_check_boxes :plant_containers, PlantContainer.order(:description), :id, :description,
-                                    {include_hidden: false}%>
-  </div>
-  <div>
-    <%= form.submit %>
+  <div class="my-4">
+    <%= form.submit class: "bg-green-500 rounded text-white text-center py-1 w-full hover:bg-green-400 hover:cursor-pointer transition" %>
   </div>
 <% end %>

@@ -1,8 +1,13 @@
+<%= turbo_frame_tag %>
 <tr class="h-12 shadow rounded" id="<%= dom_id plant %>">
   <td><%= plant.id %></td>
   <td><%= plant.name %></td>
   <td><%= plant.variety %></td>
   <td><%= plant.plant_date.strftime("%Y-%m-%d") %></td>
   <td><%= plant.created_at.strftime("%Y-%m-%d") %></td>
-  <td class="h-full"><a class="bg-yellow-500 text-white p-2 rounded" href="/plants/<%=plant.id %>">Info</a></td>
+  <td class="h-full">
+    <%= link_to "Edit", plant_path(plant), class: "bg-blue-400 px-2 py-1 rounded text-white shadow" %>
+    <%= link_to "Delete", plant_path(plant.id), method: "delete", class: "bg-red-400 px-2 py-1 rounded text-white shadow" %>
+    <%= link_to "Info", plant_path(plant.id), class: "bg-yellow-400 px-2 py-1 rounded text-white shadow" %>
+  </td>
 </tr>
