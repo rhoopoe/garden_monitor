@@ -20,6 +20,10 @@
         <%= render plant %>
       <% end %>
     </table>
+    <div data-controller="hello">
+      <p>Clicks: <span data-hello-target="bruh"></span></p>
+      <button data-action="click->hello#add">A certain button</button>
+    </div>
     <div class="w-full bg-red-400">
       <%= link_to "New plant", new_plant_path %>
     </div>
