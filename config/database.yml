@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: gardening_app_production
+  database: gardening_app_development
   username: gardening_app
   password: <%= ENV["GARDENING_APP_DATABASE_PASSWORD"] %>

@@ -1,0 +1,10 @@
+<div id="<%= dom_id plant_container %>">
+  <% if action_name != "show" %>
+    <%= link_to "Show this plant container", plant_container, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this plant container", edit_plant_container_path(plant_container), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+  <h1><%= plant_container.description %></h1>
+  <h1><%= plant_container.notes %></h1>
+  <h1><%= plant_container.location %></h1>
+</div>

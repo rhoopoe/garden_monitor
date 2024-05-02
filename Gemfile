@@ -26,9 +26,11 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem "spring", group: :development
-gem "foreman", group: :development
+gem "spring"
+gem "foreman"
 gem "faker", group: :development
+gem "chartkick"
+gem "groupdate"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

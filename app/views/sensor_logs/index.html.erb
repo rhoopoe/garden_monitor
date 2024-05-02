@@ -1,11 +1,8 @@
-<div>
-  <table class="w-full my-2 text-center">
-    <tr class="text-center text-lg bg-green-500 text-white w-full rounded h-16">
-      <th>Id</th>
-      <th>Value</th>
-      <th>Sensor</th>
-      <th>Date</th>
-    </tr>
-    <div id="sensors_logs_display"></div>
-  </table>
+<div class="w-3/5 bg-white py-3 px-2 flex flex-col space-y-4">
+  <h1 class="text-3xl font-semibold">Sensor logs</h1>
+  <%= @sensor_logs.each do |sensor_log| %>
+    <div>
+      <%= sensor_log.value %>
+    </div>
+  <% end %>
 </div>

@@ -3,7 +3,6 @@ class SensorLogsController < ApplicationController
 
   def create
     @sensor_log = SensorLog.new(sensor_log_params)
-    ActionCable.server.broadcast('sensor_logs', @sensor_log)
     if @sensor_log.save
       render json: @sensor_log, status: :created
     else
@@ -13,7 +12,6 @@ class SensorLogsController < ApplicationController
 
   def index
     @sensor_logs = SensorLog.all
-    ActionCable.server.broadcast('sensor_logs', @sensor_logs)
   end
 
   def show

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :cars, :sensor_logs, :plants, :plant_containers, :sensors, :users
+  resources :sensors
+  resources :plant_containers
+  resources :sensor_logs, :plants, :plant_containers, :sensors, :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

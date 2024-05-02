@@ -1,0 +1,43 @@
+<div class="md:w-2/3 w-full flex flex-col space-y-4 bg-white py-3 px-4">
+  <h1 class="text-4xl font-semibold">
+    <span>Plant Container |</span>
+    <span class="text-slate-500"><%= @plant_container.name %></span>
+  </h1>
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <section>
+    <label class="text-xl font-semibold" for="plant-container-description">Description</label>
+    <p id="plant-container-description"><%= @plant_container.description %></p>
+  </section>
+  <section>
+    <label class="text-xl font-semibold" for="plant-container-notes">Notes</label>
+    <p id="plant-container-notes"><%= @plant_container.notes %></p>
+  </section>
+  <section>
+    <label class="text-xl font-semibold" for="container-plant-table">Plants in container</label>
+    <table class="w-full text-left" id="container-plant-table">
+      <tr class="shadow">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Variety</th>
+        <th>Plant Date</th>
+      </tr>
+      <% @plant_container.plants.each do |plant| %>
+        <tr class="shadow">
+          <td><%= plant.id %></td>
+          <td><%= plant.name %></td>
+          <td><%= plant.variety %></td>
+          <td><%= plant.plant_date.strftime('%F') %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+  <div>
+    <%= link_to "Edit container", edit_plant_container_path(@plant_container), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Delete container", plant_container_path(@plant_container), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back", plant_containers_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

@@ -48,7 +48,7 @@
     <div class="w-full flex flex-col justify-center">
       <%= form.label :plant_containers, class: "mb-2" %>
       <div class="grid grid-cols-2">
-        <%= form.collection_check_boxes :plant_containers, PlantContainer.order(:description), :id, :description,
+        <%= form.collection_check_boxes :plant_containers, PlantContainer.order(:name), :id, :name,
                                         { include_hidden: false } %>
       </div>
     </div>
