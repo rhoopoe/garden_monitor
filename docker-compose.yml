@@ -1,0 +1,23 @@
+services:
+  gardening-app:
+    image: 'rhoopoe/gardening_app:latest'
+    build:
+      dockerfile: ./Dockerfile
+    container_name: gardening-app
+    depends_on:
+      - db
+    environment:
+      RAILS_MASTER_KEY: #####
+    ports:
+      - "3000:3000"
+  db:
+    image: 'postgres:15-alpine'
+    container_name: gardening-db
+    environment:
+      POSTGRES_USER: gardening-app
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+secrets:
+  db_password:
+    file: ./db_password.txt
