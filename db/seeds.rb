@@ -34,8 +34,12 @@ sensor_3 = Sensor.create!(name: 'Soil moisture sensor #3', description: 'resisti
 User.create!(username: 'rhoopoe', email: 'rhoopoe@mail.com', password: 'password', password_confirmation: 'password',
              role: 'admin')
 
-1000.times do
-  sensor_1.sensor_logs << SensorLog.new(sensor_id: sensor_1.id, value: rand(sensor_1.maximum_value))
-  sensor_2.sensor_logs << SensorLog.new(sensor_id: sensor_2.id, value: rand(sensor_2.maximum_value))
-  sensor_3.sensor_logs << SensorLog.new(sensor_id: sensor_3.id, value: rand(sensor_3.maximum_value))
+1000.times do |index|
+  time = Time.now.advance(hours: index)
+  # sensor_1.sensor_logs << SensorLog.new(sensor_id: sensor_1.id, value: rand(sensor_1.maximum_value),
+  #                                       created_at: time, updated_at: time)
+  sensor_2.sensor_logs << SensorLog.new(sensor_id: sensor_2.id, value: rand(sensor_2.maximum_value),
+                                        created_at: time, updated_at: time)
+  sensor_3.sensor_logs << SensorLog.new(sensor_id: sensor_3.id, value: rand(sensor_3.maximum_value),
+                                        created_at: time, updated_at: time)
 end

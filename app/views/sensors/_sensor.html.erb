@@ -1,7 +1,7 @@
 <div id="<%= dom_id sensor %>">
   <div>
     <h1 class="text-2xl">Sensor <%= sensor.id %></h1>
-    <%= line_chart sensor.sensor_logs.map { |log| [log.created_at, log.value] } %>
+    <%= line_chart sensor.sensor_logs.last(72).map { |log| [log.created_at, log.value] } %>
   </div>
   <% if action_name != "show" %>
     <%= link_to "Show this sensor", sensor, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

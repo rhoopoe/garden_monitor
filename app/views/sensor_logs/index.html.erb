@@ -1,7 +1,8 @@
 <div class="w-3/5 bg-white py-3 px-2 flex flex-col space-y-4">
   <h1 class="text-3xl font-semibold">Sensor logs</h1>
-  <%= @sensor_logs.each do |sensor_log| %>
-    <div>
+  <% @sensor_logs.each do |sensor_log| %>
+    <div class="flex space-x-2.5">
+      <%= sensor_log.id %>
       <%= sensor_log.value %>
     </div>
   <% end %>
